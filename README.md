@@ -47,8 +47,16 @@ If you are looking for sample Java client that can be used for making OData call
 ###OData feature support
 As mentioned above, SAP Cloud for customer supports V2 version of the OData protocol. Here we list the set of system query options that are supported by the C4C OData implementation. For sake of brevity, the initial part of the URL https://myNNNNNN.crm.ondemand.com/sap/c4c/odata/v1/c4codata is skipped in the following examples:
 
-| $format | /OpportunityCollection?$format=json | Returns Opportunity entries in JSON format with server side paging |
-| $top |  /OpportunityCollection?$top=10 | Returns top 2 Opportunities. 'Top 2' is defined by server logic here |
+
+####System Query Options
+
+Option | Example | Description
+-------|---------|------------
+$format  | /OpportunityCollection?$format=json | Returns Opportunity entries in JSON format with server side paging
+$top |  /OpportunityCollection?$top=10 | Returns top 2 Opportunities. 'Top 2' is defined by server logic here
+$skip | /OpportunityCollection?$skip=10 | Skips the first 10 entries and then returns the rest
+$select | /OpportunityCollection?$select=OpportunityID,AccountID | Returns Opportunity entries but only 2 attributes OpportunityID and AccountID
+
 
 
 
