@@ -30,8 +30,8 @@ SAP Cloud for customer OData API's support request payloads in both Atom XML and
 
 #####Authentication
 All requests should have an Authoriation header.
-  * For Basic authentication this should be **Authorization: Basic <base64 encoded value of the username:password>**
-  * For OAuth SAML bearer flow this should be **Authorization: Bearer <OAuth token>** (note the space between Bearer and the actual OAuth token)
+  * For Basic authentication this should be **Authorization: Basic _base64_encoded_value_of_username:password_**
+  * For OAuth SAML bearer flow this should be **Authorization: Bearer _OAuth_token_** (note the space between Bearer and the actual OAuth token)
 
 #####CSRF Token
 For modifying methods (POST/PUT/PATCH) in addition to the Authorization header it is also mandatory to specify a CSRF token as well. Now the question arises as to how can you get a CSRF token. The following steps need to be undertaken to fetch a CSRF token that can be used to make the modifying calls:
