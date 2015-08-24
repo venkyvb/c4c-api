@@ -122,7 +122,11 @@ For usage of $expand with $filter see the $expand section below.
 
 #####$expand
 
-C4C supports $expand option via Navigaton Properties. E.g. /AccountCollection?$top=10&$format=json&$expand=AccountMainAddress. Here AccountMainAddress is a Navigation Property defined in the EDM for the Account Entity (see the Entity defintion below).
+C4C supports $expand option via Navigaton Properties. E.g. 
+```
+/AccountCollection?$top=10&$format=json&$expand=AccountMainAddress
+```
+Here AccountMainAddress is a Navigation Property defined in the EDM for the Account Entity (see the Entity defintion below).
 
 ```XML
 			<EntityType Name="Account">
@@ -223,6 +227,7 @@ POST | Used to create entity instances
 PUT | Used to **completely** replace/overwrite and existing entity instance
 PATCH | Used to replace/overwrite existing entity instance. The key difference between PUT and PATCH is that PUT overwrites the complete entity whereas PATCH only updates **only** attributes of the entity that are part of the payload
 $batch | Used to create/update multiple entities with explicit transaction boundaries specified via Changesets as a part of the payload
+Deep Insert | Used with **POST**. Allows the creation of complete entity (header entry, child entries etc) with a single POST request
 
 
 ###Sample Payloads
