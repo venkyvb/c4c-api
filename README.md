@@ -20,6 +20,13 @@ SAP Cloud for customer OData supports 2 authentication mechanisms:
   * OAuth SAML bearer flow (you can find sample Java implementation of OAuth SAML bearer client [here](https://github.com/venkyvb/OAuthSAMLClient).)
   
 
+####SAP standard services vs. Custom services
+
+SAP Cloud for customer product, offers an OData Service Explorer, using which one can view the standard servcies that are shipped by SAP (e.g. /c4codata/) as well as model tenant specific custom services. From an API point of view the custom services behave exactly the same way as a standard service does. Only the URL paths for the services are different:
+  * Standard services have the URL path - https://myNNNNNN.crm.ondemand.com/sap/c4c/odata/v1/....
+  * Custom services have the URL path - https://myNNNNNN.crm.ondemand.com/sap/c4c/odata/cust/v1/...
+  
+
 ####Making a Request
 
 #####Formats
@@ -39,7 +46,11 @@ For modifying methods (POST/PUT/PATCH) in addition to the Authorization header i
   * The C4C server will respond back with the EDM metadata (of course since this is what is being requested by the GET call), in addition it would also send a **Response header** called **X-CSRF-Token** (same name as what was sent) and this will have a token value. The token value needs to be used for subsequent calls (like POST/PUT/PATCH).
 
 #####Server side paging
-For GET requests, if no query options are specified, the server enforces paging to provide better performance. Currently the page size is fixed at 1000 entries. However at the end of 1000 entries the server includes a **next** link that allows the caller to get the next 1000 entries. The link would be something like this: https://myNNNNNN.crm.ondemand.com/sap/c4c/odata/v1/c4codata/OpportunityCollection?$format=json&$skiptoken=1001 (in this specific case the OpportunityCollection entity set is being queried).
+For GET requests, if no query options are specified, the server enforces paging to provide better performance. Currently the page size is fixed at 1000 entries. However at the end of 1000 entries the server includes a **next** link that allows the caller to get the next 1000 entries. The link would be something like this:
+```
+https://myNNNNNN.crm.ondemand.com/sap/c4c/odata/v1/c4codata/OpportunityCollection?$format=json&$skiptoken=1001 
+```
+(in this specific case the OpportunityCollection entity set is being queried).
 
 ####Sample client
 If you are looking for sample Java client that can be used for making OData calls to C4C you can go [here](https://github.com/venkyvb/ODataConsumerSample). Note that this sample uses Apache Olingo library to construct and read OData payloads.
@@ -194,7 +205,24 @@ E.g. if the requirement is to get all Opportunities that have a certain Product,
 /OpportunityItemCollection?$format=json&$filter=ProductID eq 'P300104'&$expand=Opportunity
 ```
 
+#####$search
 
+From an OData version point of view $search is **NOT** part of OData V2 specification. However C4C OData API does support $search. This is one of the 'enhacements' that has been adopted over the V2 standard. Using the OData Service Explorer it is possible to flag entity attributes as being relevant for search. If flagged, $search can be done at the entity collection level. The following example outlines the usage of the $search:
+
+```
+https://myNNNNNN.crm.ondemand.com/sap/byd/odata/cust/v1/c4codata/CustomerCollection?$search='Porter'
+```
+
+####Support for other OData/HTTP operations
+
+C4C OData API support the following OData/HTTP operations (in addition to GET):
+
+Operation | Description
+----------|------------
+POST | Used to create entity instances
+PUT | Used to **completely** replace/overwrite and existing entity instance
+PATCH | Used to replace/overwrite existing entity instance. The key difference between PUT and PATCH is that PUT overwrites the complete entity whereas PATCH only updates **only** attributes of the entity that are part of the payload
+$batch | Used to create/update multiple entities with explicit transaction boundaries specified via Changesets as a part of the payload
 
 
   
