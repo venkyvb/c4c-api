@@ -1,3 +1,5 @@
+This page contains the sample payloads for Creating a ticket and Updating the same ticket.
+
 ###Create Ticket
 
 ####$batch with Deep Insert
