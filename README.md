@@ -225,7 +225,9 @@ PATCH | Used to replace/overwrite existing entity instance. The key difference b
 $batch | Used to create/update multiple entities with explicit transaction boundaries specified via Changesets as a part of the payload
 
 
-  
+###Sample Payloads
+
+  * [Service Ticket](https://github.com/venkyvb/c4c-api/blob/master/sections/serviceticket.md)
 
 
 
