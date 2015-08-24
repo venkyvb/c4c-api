@@ -76,7 +76,7 @@ $inlinecount | /OpportunityCollection?$top=10&$inlinecount=allpages | Returns th
 
 XML response with inlinecount. The Element <m:count> contains the response to the $inlinecount.
 ```XML
-<feed xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xml:base="https://my306695.vlab.sapbydesign.com/sap/c4c/odata/c4codata/">
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xml:base="https://myNNNNNN.crm.ondemand.com/sap/c4c/odata/c4codata/">
 	<id>https://myNNNNNN.crm.ondemand.com/sap/c4c/odata/v1/c4codata/OpportunityCollection</id>
 	<title type="text">OpportunityCollection</title>
 	<updated>2015-08-23T17:30:32Z</updated>
