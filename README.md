@@ -233,6 +233,7 @@ Deep Insert | Used with **POST**. Allows the creation of complete entity (header
 ###Sample Payloads
 
   * [Service Ticket](https://github.com/venkyvb/c4c-api/blob/master/sections/serviceticket.md)
+  * [Mass query pattern](https://github.com/venkyvb/c4c-api/blob/master/sections/massquery.md)
 
 
 
