@@ -1,8 +1,8 @@
 Outlined here is a general pattern for doing a mass query using OData. 
 
-#### Simple approach
+#### URL based approach
 
-Outlined below is the simple approach to do an OData query using the standard system query options.
+Outlined below is the simple (URL based) approach to perform an OData query, on an entity collection, using the standard system query options.
 
 ```
 GET /CustomerCollection?$inlinecount=allpages&$format=json&$filter=ID eq '12345' or ID eq '567879'...
@@ -24,5 +24,6 @@ GET CustomerCollection?$top=5000&$inlinecount=allpages&$format=json&$filter=ID e
 
 --batch_875d183d-1b52-4c89-939b-95a731b38f13--
 ```
+In the above example 5000 entries are being read with the $filter condition having 5000 OR conditions that are based on the ID attribute.
 
 Note that before the GET in the batch body there should be one carriage return line feed and after the GET there should be at least 2 carriage return line feeds.
